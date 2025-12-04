@@ -1,10 +1,10 @@
 from mysql.connector import connect
 
 def executar():
-    # # cadastrar_livro()
+    cadastrar_livro()
     # editar_livro()
     # apagar_livro()
-    listar_livro()
+    # listar_livro()
     pass
 
 
@@ -13,6 +13,10 @@ def cadastrar_livro():
     
     titulo = input("digite o nome do livro")
     numero_paginas = input("digite a qtd de paginas")
+    autor = input("digite nome autor")
+    preco = input("digite preco")
+    isbn = input("digite isbn")
+    descricao = input("digite descricao")
     
     conexao = connect(
         host ="127.0.0.1",
@@ -24,8 +28,8 @@ def cadastrar_livro():
     
     cursor = conexao.cursor()
     
-    sql = "insert into livros (titulo, numero_paginas) VALUES (%s, %s)"
-    dados = (titulo, numero_paginas)
+    sql = "insert into livros (titulo, numero_paginas, autor, preco, isbn, descricao) VALUES (%s, %s, %s, %s, %s, %s)"
+    dados = (titulo, numero_paginas, autor, preco, isbn, descricao)
     
     cursor.execute(sql, dados)
     conexao.commit()

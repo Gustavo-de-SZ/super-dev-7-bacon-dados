@@ -1,8 +1,8 @@
 from mysql.connector import connect
 
 def executar():
-    cadastrar_livro()
-    # editar_livro()
+    # cadastrar_livro()
+    editar_livro()
     # apagar_livro()
     # listar_livro()
     pass
@@ -32,8 +32,9 @@ def cadastrar_livro():
     cursor.close()
 
 def editar_livro():
-    id = input("digite o id que deseja deletar")
+    id = input("digite o id que deseja alterar")
     titulo = input("digite o nome do livro")
+    numero_paginas = input("digite o nuemro de paginas")
     
     conexao = connect(
         host ="127.0.0.1",
@@ -45,8 +46,8 @@ def editar_livro():
     
     cursor = conexao.cursor()
     
-    sql = "UPDATE livros set titulo =%s where id = %s"
-    dados = (titulo, id)
+    sql = "UPDATE livros set titulo = %s, numero_paginas = %s where id = %s"
+    dados = (titulo, numero_paginas, id)
     
     cursor.execute(sql, dados)
     conexao.commit()

@@ -1,10 +1,10 @@
 from mysql.connector import connect
 
 def executar():
-    # cadastrar_livro()
-    editar_livro()
+    # # cadastrar_livro()
+    # # editar_livro()
     # apagar_livro()
-    # listar_livro()
+    listar_livro()
     pass
 
 
@@ -95,7 +95,7 @@ def listar_livro():
     
     cursor = conexao.cursor()
     
-    cursor.execute("select id, titulo, numero_paginas from livros")
+    cursor.execute("select id, titulo, numero_paginas, autor, preco, isbn, descricao from livros")
     registros = cursor.fetchall()
     
     cursor.close()
@@ -105,4 +105,8 @@ def listar_livro():
         id = registro[0]
         titulo = registro[1]
         numero_paginas = registro[2]
-        print("ID:", id, "TITULO:", "numero de paginas", numero_paginas, titulo)
+        autor = registro[3]
+        preco = registro[4]
+        isbn = registro[5]
+        descricao = registro[6]
+        print("ID:", id, "TITULO:", "numero de paginas", numero_paginas, autor, preco, isbn, descricao)

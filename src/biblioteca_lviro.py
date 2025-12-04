@@ -1,0 +1,98 @@
+from mysql.connector import connect
+
+def executar():
+    cadastrar_livro()
+    # editar_livro()
+    # apagar_livro()
+    # listar_livro()
+    pass
+
+
+
+def cadastrar_livro():
+    
+    titulo = input("digite o nome do livro")
+    numero_paginas = input("digite a qtd de paginas")
+    
+    conexao = connect(
+        host ="127.0.0.1",
+        port = "3306",
+        user = "root",
+        password = "admin",
+        database = "biblioteca"
+        )
+    
+    cursor = conexao.cursor()
+    
+    sql = "insert into livros (titulo, numero_paginas) VALUES (%s, %s)"
+    dados = (titulo, numero_paginas)
+    
+    cursor.execute(sql, dados)
+    conexao.commit()
+    cursor.close()
+
+def editar_livro():
+    id = input("digite o id que deseja deletar")
+    titulo = input("digite o nome do livro")
+    
+    conexao = connect(
+        host ="127.0.0.1",
+        port = "3306",
+        user = "root",
+        password = "admin",
+        database = "biblioteca"
+        )
+    
+    cursor = conexao.cursor()
+    
+    sql = "UPDATE livros set titulo =%s where id = %s"
+    dados = (titulo, id)
+    
+    cursor.execute(sql, dados)
+    conexao.commit()
+    cursor.close()
+
+
+def apagar_livro():
+    
+    id = input("digite o id do livbro que quer apagar")
+    
+    conexao = connect(
+        host ="127.0.0.1",
+        port = "3306",
+        user = "root",
+        password = "admin",
+        database = "biblioteca"
+        )
+    
+    cursor = conexao.cursor()
+    
+    sql = "DELETE from livros where id = %s"
+    dados = (id,)
+    
+    cursor.execute(sql, dados)
+    conexao.commit()
+    cursor.close()
+    
+def listar_livro():
+    
+    conexao = connect(
+        host ="127.0.0.1",
+        port = "3306",
+        user = "root",
+        password = "admin",
+        database = "biblioteca"
+        )
+    
+    cursor = conexao.cursor()
+    
+    cursor.execute("select id, titulo from livros")
+    registros = cursor.fetchall()
+    
+    cursor.close()
+    conexao.close()
+    
+    for registro in registros:
+        id = registro[0]
+        titulo = registro[1]
+        print("ID:", id, "TITULO:", titulo)

@@ -3,14 +3,19 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
 
 # Distribution / packaging
-.Python
 build/
-develop-eggs/
 dist/
+develop-eggs/
 downloads/
 eggs/
 .eggs/
@@ -25,7 +30,7 @@ var/
 MANIFEST
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
+# Geralmente contém logs e arquivos temporários de build
 *.manifest
 *.spec
 
@@ -45,37 +50,59 @@ coverage.xml
 *.cover
 *.py,cover
 .hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff
+instance/
+.webassets-cache
+
+# Scrapy stuff
+.scrapy
+
+# Sphinx documentation
+docs/_build/
 
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# pyenv
-.python-version
-
-# virtualenv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# VS Code
-.vscode/
-
 # PyCharm
 .idea/
+
+# VSCode
+.vscode/
 
 # macOS
 .DS_Store
 
-# Logs and temp files
-*.log
-*.tmp
-*.bak
+# Windows
+Thumbs.db
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre
+.pyre/
+
+# Pytype
+.pytype/
+
+# Cached data
+*.pickle
+
+# dotenv
+*.env
+.env.*
+
+env/
